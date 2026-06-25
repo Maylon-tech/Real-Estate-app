@@ -1,4 +1,6 @@
 import Link from "next/link"
+import Button from "../ui/Button"
+import { FaHome } from "react-icons/fa"
 
 
 interface NavbarProps {
@@ -54,13 +56,15 @@ const Navbar = (
             
             {/* DESKTOP BUTTONS */}
             <div className="hidden items-center gap-4 lg:flex">
-                <button className={`rounded-full px-4 py-2 text-sm font-medium transition hover:bg-primary/10 ${isTransparent ? "text-white/80" : "text-text/70"}`}>
-                    Sign In
-                </button>
-                <button className={`rounded-full bg-primary px-4 py-2 text-sm font-medium text-white transition hover:bg-primary/80 ${isTransparent ? "text-white/80" : "text-text/70"}`}>
-                    Sign Up
-                </button>
+                    <Button variant="outline">
+                        Login
+                    </Button>
+                    <Button iconPosition="right" icon={<FaHome />} variant="outline">
+                        Add Property
+                    </Button>
             </div>
+            
+            {/* MOBILE MENU */}
         </nav>
       </div>
     </section>
