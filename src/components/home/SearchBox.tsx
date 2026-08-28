@@ -11,7 +11,7 @@ const SearchBox = () => {
           placeholder="Search by City, neighborhood, address, or ZIP code"
           className="px-5 py-4 h-14 w-full flex-1 rounded-2xl border border-white/10 bg-white/5 text-white placeholder:text-white-50 outline-none transition focus:border-primary/40"
         />
-        <Button>
+        <Button variant="primary">
           Search Properties
         </Button>
       </div>
