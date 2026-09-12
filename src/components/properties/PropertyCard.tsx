@@ -1,6 +1,7 @@
-import { Property } from "@/types/property"
 import Image from "next/image"
 import Link from "next/link"
+
+import { Property } from "@/types/property"
 
 interface PropertyCardProps { 
     property: Property
@@ -15,8 +16,9 @@ const PropertyCard = ({ property }:PropertyCardProps) => {
     >
       <div className="w-full h-full relative">
         <Image 
-            src={property.image} 
+            src={property.imageUrl} 
             alt={property.title}
+            fill
             className="inset-0 object-cover transition duration-700 group-hover:scale-110"
         />
         {/* Dark Overlay */}
@@ -31,7 +33,7 @@ const PropertyCard = ({ property }:PropertyCardProps) => {
         
         {/* Content Card */}
         <div className="absolute bottom-5 left-5 right-5 z-20 rounded-[28px] border border-white/10 bg-white/10 p-5 backdrop-blur-2xl">
-            <div className="">
+            <div className="flex items-start justify-between gap-4">
                 <div>
                     {
                         property.status === "rent" ? (
@@ -52,7 +54,30 @@ const PropertyCard = ({ property }:PropertyCardProps) => {
                             </h3>
                         )
                     }
-                    <p>{ property.location }</p>
+                    <p className="rounded-full bg-white/10 px-4 py-2 text-sm text-white">{ property.location }</p>
+                </div>
+
+                <div className="rounded-full bg-white/10 px-4 py-2 text-sm text-white">
+                    {
+                        property.type
+                    }
+                </div>
+            </div>
+
+            <h2 className="mt-5 text-2xl font-bold text-white">
+                { property.title}
+            </h2>
+
+            {/* features */}
+            <div className="mt-5 flex flex-wrap gap-3 border-t border-white/10 pt-5">
+                <div className="rounded-full bg-white/10 px-4 py-2 text-sm text-white">
+                    { property.bedrooms} Beds
+                </div>
+                <div className="rounded-full bg-white/10 px-4 py-2 text-sm text-white">
+                    { property.bathrooms} Bathrooms
+                </div>
+                <div className="rounded-full bg-white/10 px-4 py-2 text-sm text-white">
+                    { property.bedrooms} sqft
                 </div>
             </div>
         </div>

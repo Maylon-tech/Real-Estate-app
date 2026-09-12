@@ -9,5 +9,5 @@ export interface Property {
     bedrooms: number
     bathrooms: number 
     area: number
-    image: string
+    imageUrl: string
 }
