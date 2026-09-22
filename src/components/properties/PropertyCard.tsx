@@ -25,7 +25,7 @@ const PropertyCard = ({ property }:PropertyCardProps) => {
         <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/20 to-transparent" />
 
         {/* Top Badge */}
-        <div className="absolute left-5 top-5 z-20 rounded-full bg-white-/80 px-4 py-2 text-sm font-semibold text-primary">
+        <div className="absolute left-5 top-5 z-20 rounded-full bg-white/80 px-4 py-2 text-sm font-semibold text-primary">
             {
                property.status === 'rent' ? "For Rent" : "For Sale" 
             }

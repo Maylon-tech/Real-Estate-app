@@ -1,6 +1,5 @@
 "use client";
 
-
 import Link from "next/link"
 
 import { navLinks } from "../navbar/Navbar"
@@ -21,7 +20,7 @@ const Footer = () => {
             </span>
         </Link>
 
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="items-center gap-8 flex">
             {
                 navLinks.map((item) => (
                     <Link
