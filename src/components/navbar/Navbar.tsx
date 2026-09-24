@@ -14,7 +14,7 @@ interface NavbarProps {
 
 export const navLinks = [
     "Home",
-    "Proprieties",
+    "Properties",
     "MarketPlace"
 ]
 
