@@ -16,14 +16,14 @@ const page = () => {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3 my-4">
-            {
-                properties.map((property) => (
-                    <PropertyCard
-                        key={property.id}
-                        property={property}
-                    />
-                ))
-            }
+          {
+            properties.map((property) => (
+              <PropertyCard
+                key={property.id}
+                property={property}
+              />
+            ))
+          }
         </div>
       </div>
     </Layout>

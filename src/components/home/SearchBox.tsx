@@ -1,7 +1,5 @@
 import Button from "../ui/Button"
 
-
-
 const SearchBox = () => {
   return (
     <div className="mt-10 border border-white/10 shadow-2xl items-center gap-2 rounded-[30px] bg-white/10 p-4 backdrop-blur-2xl">

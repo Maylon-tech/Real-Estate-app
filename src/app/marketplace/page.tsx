@@ -22,8 +22,8 @@ const MarketPlace = () => {
                 variant="primary"
                 icon={<HiOutlineAdjustmentsHorizontal size={20} />}
             >
-                Filter
-                </Button>
+              Filter
+            </Button>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3 my-4">

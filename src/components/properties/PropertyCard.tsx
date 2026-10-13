@@ -18,7 +18,8 @@ const PropertyCard = ({ property }:PropertyCardProps) => {
         <Image 
             src={property.imageUrl} 
             alt={property.title}
-            fill
+            width={200}
+            height={300}
             className="inset-0 object-cover transition duration-700 group-hover:scale-110"
         />
         {/* Dark Overlay */}

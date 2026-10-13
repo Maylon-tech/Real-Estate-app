@@ -60,7 +60,7 @@ const PropertyPage = () => {
                 <div className="w-full h-60 md:h-100 lg:h-120 relative my-6">
                     <Image 
                         src="/images/image1.jpg" alt="property" fill className="rounded-2xl obejct-cover"
-                    />
+                    /> 
                 </div>
 
                 <div className="mt-16 grid gap-10 lg:grid-cols-3">

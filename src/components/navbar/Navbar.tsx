@@ -7,7 +7,6 @@ import { FaHome } from "react-icons/fa"
 import { IoClose } from "react-icons/io5";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 
-
 interface NavbarProps {
     variant?: "transparent" | "solid"
 }
@@ -18,10 +17,8 @@ export const navLinks = [
     "MarketPlace"
 ]
 
-
 const Navbar = ({ variant = "transparent" }: NavbarProps) => {
     const [isOpen, setIsOpen] = useState(false)
-
     const isTransparent = variant === "transparent"
     
   return (
