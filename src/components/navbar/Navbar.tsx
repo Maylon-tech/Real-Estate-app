@@ -6,6 +6,7 @@ import Button from "../ui/Button"
 import { FaHome } from "react-icons/fa"
 import { IoClose } from "react-icons/io5";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import { useAuthModal } from "@/store/useAuthModalStore";
 
 interface NavbarProps {
     variant?: "transparent" | "solid"
@@ -20,6 +21,7 @@ export const navLinks = [
 const Navbar = ({ variant = "transparent" }: NavbarProps) => {
     const [isOpen, setIsOpen] = useState(false)
     const isTransparent = variant === "transparent"
+    const { openLogin } = useAuthModal()
     
   return (
       <section className={
@@ -58,7 +60,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
             
             {/* DESKTOP BUTTONS */}
             <div className="hidden items-center gap-4 lg:flex">
-                    <Button variant="outline">
+                    <Button variant="outline" onClick={openLogin}>
                         Login
                     </Button>
                       <Button
@@ -106,7 +108,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                             }
                             
                             <div className="flex flex-col gap-3 mt-4">
-                                <Button variant="outline">
+                                <Button variant="outline" onClick={openLogin}>
                                     Login
                                 </Button>
                                 <Button
