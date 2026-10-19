@@ -23,10 +23,11 @@ const Modal = ({ isOpen, onClose, title,children }: ModalProps) => {
 
   return (
     <div 
-        aria-hidden={isOpen} 
-        className={`
-            fixed inset-0 z-50 flex items-center justify-center px-4 transition-opacity duration-500
-            ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+      aria-hidden={isOpen} 
+      className={`
+        fixed inset-0 z-50 flex items-center justify-center px-4 transition-opacity duration-500
+        ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}
+      `}
     >
       {/* backdrop */}
       <div

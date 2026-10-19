@@ -1,8 +1,11 @@
-
 "use client"
+
 import { useState } from 'react'
 import { useAuthModal } from "@/store/useAuthModalStore"
 import Modal from "./Modal"
+import Input from '../ui/Input'
+import Button from '../ui/Button'
+import { FcGoogle } from 'react-icons/fc'
 
 interface LoginValue {
     email: string,
@@ -35,30 +38,83 @@ const LoginModal = () => {
 
     const validate = () => {
         const newErrors: LoginErrors = {}
-    }
+    
+        // validate the email
+        if(!values.email.trim()) {
+            errors.email = "Email is required.!"
+        } else if (!/^\S+@\S+\.\S+$/.test(values.email)) {
+            errors.email = "Enter a valid email address."
+        }
 
-    // validate the email
-    if(!values.email.trim()) {
-        newErrors.email = "Email is required.!"
-    } else if (!/^\S+@\S+\.\S+$/.test(values.email)) {
-        newErrors.email = "Enter a valid email address."
-    }
+        // validate the password field
+        if(!values.password.trim()) {
+            errors.password = "Password is required.!"
+        } else if (!/^\S+@\S+\.\S+$/.test(values.email)) {
+            errors.password = "Password must be at least 6 characters!."
+        }
 
-    // validate the password field
-    if(!values.password.trim()) {
-        newErrors.password = "password is required.!"
-    } else if (!/^\S+@\S+\.\S+$/.test(values.email)) {
-        newErrors.password = "Enter a valid email address."
+        setErrors(newErrors)
+        return Object.keys(newErrors).length === 0
     }
     
-
   return (
     <Modal 
         title="Login"
         onClose={closeLogin}
         isOpen={isLoginOpen}
     >
-      Login to account 
+        <div className="mb-6 space-y-1">
+            <h2 className="text-2xl font-semibold text-gray-900">Welcome back</h2>
+            <p className="text-sm text-gray-500">
+                login to your account
+            </p>
+        </div>
+        <form className="space-y-8">
+            <Input 
+                id='login-email'
+                name="email"
+                label="Email"
+                value={values.email}
+                onChange={handleChange}
+                error={errors.email}
+                disabled={loading}
+            />
+            <Input 
+                id='login-disabled'
+                name="password"
+                label="Password"
+                value={values.password}
+                onChange={handleChange}
+                error={errors.password}
+                disabled={loading}
+            />
+            <Button loading={loading}>
+                Continue
+            </Button>
+        </form>
+        
+        {/* Divider */}
+        <div className="relative my-6">
+            <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-white px-4 text-gray-500">
+                    Or
+                </span>
+            </div>
+        </div>
+
+        <Button 
+            variant="outline"
+            fullWidth
+            disabled={loading}
+            icon={<FcGoogle size={22} />}
+        >
+            Continue with Google
+        </Button>
+
+        <p className=""></p>
     </Modal>
   )
 }
