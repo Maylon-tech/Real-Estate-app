@@ -114,7 +114,15 @@ const LoginModal = () => {
             Continue with Google
         </Button>
 
-        <p className=""></p>
+        <p className="text-gray-400 text-center text-sm mt-6">
+            Don&apo;t have an account?{" "}
+            <span 
+                className="text-primary font-semibold cursor-pointer hover:underline"
+                onClick={openRegister}
+            >
+                Register
+            </span>
+        </p>
     </Modal>
   )
 }
