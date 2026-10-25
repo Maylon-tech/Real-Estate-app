@@ -88,7 +88,7 @@ const LoginModal = () => {
                 error={errors.password}
                 disabled={loading}
             />
-            <Button loading={loading}>
+            <Button loading={loading} type="submit">
                 Continue
             </Button>
         </form>

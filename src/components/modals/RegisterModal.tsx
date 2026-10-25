@@ -3,6 +3,9 @@
 import { useState } from "react"
 import { useAuthModal } from "@/store/useAuthModalStore"
 import Modal from "./Modal"
+import Input from "../ui/Input"
+import Button from "../ui/Button"
+import { FcGoogle } from 'react-icons/fc'
 
 interface RegisterValue {
   name: string,
@@ -65,16 +68,79 @@ const RegisterModal = () => {
 
   return (
     <Modal 
-        title="Register"
-        onClose={closeRegister}
-        isOpen={isRegisterOpen}
+      title="Register"
+      onClose={closeRegister}
+      isOpen={isRegisterOpen}
     >
       <div className="mb-6 space-y-1">
-            <h2 className="text-2xl font-semibold text-gray-900">Welcome to NextState</h2>
-            <p className="text-sm text-gray-500">
-                Registger now
-            </p>
+          <h2 className="text-2xl font-semibold text-gray-900">Welcome to NextState</h2>
+          <p className="text-sm text-gray-500">
+              Create an account
+          </p>
+      </div>
+      <form className="space-y-8">
+        <Input 
+            id='login-name'
+            name="name"
+            label="Name"
+            value={values.name}
+            onChange={handleChange}
+            error={errors.name}
+            disabled={loading}
+        />
+        <Input 
+            id='login-email'
+            name="email"
+            label="Email"
+            value={values.email}
+            onChange={handleChange}
+            error={errors.email}
+            disabled={loading}
+        />
+        <Input 
+            id='login-disabled'
+            name="password"
+            label="Password"
+            value={values.password}
+            onChange={handleChange}
+            error={errors.password}
+            disabled={loading}
+        />
+        <Button loading={loading} fullWidth type="submit">
+            Continue
+        </Button>
+      </form>
+
+      {/* Divider */}
+        <div className="relative my-6">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-300" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-white px-4 text-gray-500">
+                  Or
+              </span>
+            </div>
         </div>
+
+        <Button 
+          variant="outline"
+          fullWidth
+          disabled={loading}
+          icon={<FcGoogle size={22} />}
+        >
+          Continue with Google
+        </Button>
+
+         <p className="text-gray-400 text-center text-sm mt-6">
+            Already have an account?{" "}
+            <span 
+                className="text-primary font-semibold cursor-pointer hover:underline"
+                onClick={openLogin}
+            >
+                Login
+            </span>
+        </p>
     </Modal>
   )
 }
