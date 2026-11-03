@@ -4,6 +4,7 @@ import { useCreatePropertyModalStore } from "@/store/useCreatePropertyStore"
 import Modal from "./Modal"
 import { useState } from "react"
 import Button from "../ui/Button"
+import Counter from "../properties/Counter"
 
 const STEPS = {
   TYPE: 0,
@@ -18,13 +19,20 @@ const CreatePropertyModal = () => {
   const [steps, setSteps] = useState(0)
   const { isOpen, close } = useCreatePropertyModalStore()
   const [loading, setLoading] = useState(false)
+
+  const [propertyType, setPropertyType] = useState("")
+  const [location, setLocation] = useState("")
+  const [address, setAddress] = useState("")
+  const [bedrooms, setBedrooms] = useState(1)
+  const [bathrooms, setBathrooms] = useState(1)
+  const [parkingSpaces, setParkingSpaces] = useState(0)
  
   const stepTitle = () => {
     switch (steps) {
       case STEPS.TYPE:
         return "Select property type";
       case STEPS.LOCATION:
-        return "Where is the property l0cated";
+        return "Where is the property located";
         case STEPS.DETAILS:
         return "Share some basics about your place";
         case STEPS.FEATURES:
@@ -57,7 +65,9 @@ const CreatePropertyModal = () => {
       <div className="min-h-55 rounded-xl text-gray-400 p-6 border border-dashed border-gray-300">
         {
           steps === STEPS.TYPE && (
-            <div className=""></div>
+            <div className="">
+              <Counter />
+            </div>
           )
         }
       </div>
