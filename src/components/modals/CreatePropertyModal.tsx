@@ -5,6 +5,9 @@ import Modal from "./Modal"
 import { useState } from "react"
 import Button from "../ui/Button"
 import Counter from "../properties/Counter"
+import PropertyTypeCard from "../properties/PropertyTypeCard"
+import { propertyTypes } from "@/constants/PropertyTypes"
+import Input from "../ui/Input"
 
 const STEPS = {
   TYPE: 0,
@@ -16,7 +19,7 @@ const STEPS = {
 }
 
 const CreatePropertyModal = () => {
-  const [steps, setSteps] = useState(0)
+  const [steps, setSteps] = useState(STEPS.TYPE)
   const { isOpen, close } = useCreatePropertyModalStore()
   const [loading, setLoading] = useState(false)
 
@@ -26,6 +29,9 @@ const CreatePropertyModal = () => {
   const [bedrooms, setBedrooms] = useState(1)
   const [bathrooms, setBathrooms] = useState(1)
   const [parkingSpaces, setParkingSpaces] = useState(0)
+  const [area, setArea] = useState("")
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
  
   const stepTitle = () => {
     switch (steps) {
@@ -65,11 +71,86 @@ const CreatePropertyModal = () => {
       <div className="min-h-55 rounded-xl text-gray-400 p-6 border border-dashed border-gray-300">
         {
           steps === STEPS.TYPE && (
-            <div className="">
-              <Counter />
+            <div className="grid grid-cols-2 gap-4 w-full max-h-[50vh] overflow-y-scroll no-scrollbar">
+              {
+                propertyTypes.map((item) => (
+                  <PropertyTypeCard 
+                    label={item.label}
+                    icon={item.icon}
+                    selected={propertyType === item.slug}
+                    onClick={() => setPropertyType(item.slug)}
+                    key={item.slug}
+                  />
+                ))}
             </div>
-          )
-        }
+          )}
+          {
+            steps === STEPS.LOCATION && (
+              <div className="space-y-6 w-full">
+                <Input 
+                  name="location"
+                  label="Location"
+                  value={location}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLocation(e.target.value)}
+                />
+                <Input 
+                  name="address"
+                  label="Adress"
+                  value={address}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddress(e.target.value)}
+                />
+              </div>
+          )}
+
+          {
+            steps === STEPS.DETAILS && (
+              <div className="space-y-4">
+                <Counter 
+                  title="Bedrooms"
+                  subTitle="How many bedrooms "
+                  value={bedrooms}
+                  onChange={setBedrooms}
+                />
+                <Counter 
+                  title="Bathrooms"
+                  subTitle="How many bathrooms "
+                  value={bathrooms}
+                  onChange={setBathrooms}
+                />
+                <Counter 
+                  title="Parking Spaces"
+                  subTitle="How many parking spaces "
+                  value={parkingSpaces}
+                  onChange={setParkingSpaces}
+                />
+
+                <Input 
+                  name="area"
+                  label="Property Area (sqftare)"
+                  value={area}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setArea(e.target.value)}
+                />
+              </div>
+          )}
+
+          {
+            steps === STEPS.FEATURES && (
+              <div className="space-y-6">
+                <Input 
+                  name="title"
+                  label="Property Title"
+                  value={title}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
+                />
+                <Input 
+                  name="description"
+                  label="Property Description"
+                  value={description}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDescription(e.target.value)}
+                />
+              </div>
+            )
+          }
       </div>
 
       <div className="mt-8 flex gap-3">

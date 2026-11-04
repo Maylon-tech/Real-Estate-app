@@ -33,13 +33,14 @@ export default function Counter({
 
     return (
         <div className="flex items-center justify-between py-8 border-b last:border-b-0 gap-8">
-            <div className="flex items-center justify-between">
+            <div className="">
                 <p className="font-medium text-gray-900">{title}</p>
                 {
                     subTitle && <p className="text-sm text-gray-500">{subTitle}</p>
                 }
             </div>
-            <div className="flx items-center gap-4">
+
+            <div className="flex items-center gap-4">
                 <button
                     onClick={decrease} 
                     disabled={min === value}
