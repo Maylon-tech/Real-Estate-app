@@ -8,6 +8,7 @@ import Counter from "../properties/Counter"
 import PropertyTypeCard from "../properties/PropertyTypeCard"
 import { propertyTypes } from "@/constants/PropertyTypes"
 import Input from "../ui/Input"
+import ImageUpload from "../properties/ImageUpload"
 
 const STEPS = {
   TYPE: 0,
@@ -32,7 +33,11 @@ const CreatePropertyModal = () => {
   const [area, setArea] = useState("")
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
- 
+  const [image, setImage] = useState<null |File>(null)
+  const [preview, setPreview] = useState<null | string>(null)
+  const [listingType, setListingType] = useState<"sell" | "rent">("sell")
+  const [price, setPrice] = useState("")
+
   const stepTitle = () => {
     switch (steps) {
       case STEPS.TYPE:
@@ -53,6 +58,11 @@ const CreatePropertyModal = () => {
     }
   }
 
+  const handleImageChange = (file:File) => {
+    setImage(file)
+    setPreview(URL.createObjectURL(file))
+  }
+  
   const createListing = async() => {
 
   }
@@ -147,6 +157,37 @@ const CreatePropertyModal = () => {
                   label="Property Description"
                   value={description}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDescription(e.target.value)}
+                />
+              </div>
+            )
+          }
+
+          {
+            steps === STEPS.IMAGE && (              
+              <ImageUpload 
+                preview={preview}
+                onChange={handleImageChange}
+              />              
+            )
+          }
+
+          {
+            steps === STEPS.PRICING && (
+              <div className="space-y-6">
+                <select
+                  value={listingType}
+                  onChange={(e) => setListingType(e.target.value as "sell" | "rent")}
+                  className="h-13 w-full rounded-2xl border border-black/10 px-4"
+                >
+                  <option value="" className="">For Sell</option>
+                  <option value="" className="">For Rent</option>
+                </select>
+                <Input 
+                  name="price"
+                  label={listingType === "sell" ? "Sell Price" : "Monthly Rent" }
+                  type="number"
+                  value={price}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPrice(e.target.value)}
                 />
               </div>
             )

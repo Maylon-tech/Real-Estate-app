@@ -4,9 +4,7 @@ import Layout from "@/components/layouts/Layout"
 import Navbar from "@/components/navbar/Navbar"
 import Button from "@/components/ui/Button"
 import PropertyCard from "@/components/properties/PropertyCard"
-
-import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2"
-
+import FilterButton from "@/components/marketplace/FilterButton"
 
 
 const MarketPlace = () => {
@@ -18,12 +16,7 @@ const MarketPlace = () => {
         <div className="flex justify-between">
             <h2 className="text-2xl font-bold text-text md:text-3xl">Explore</h2>
 
-            <Button 
-                variant="primary"
-                icon={<HiOutlineAdjustmentsHorizontal size={20} />}
-            >
-              Filter
-            </Button>
+            <FilterButton />
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3 my-4">

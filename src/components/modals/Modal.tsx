@@ -37,7 +37,7 @@ const Modal = ({ isOpen, onClose, title,children }: ModalProps) => {
         className={`absolute inset-0 bg-black/30 transition-all duration-500 ${isOpen ? "opacity-100" : "opacity-0"}`} 
        />
 
-       {/* Modal */}
+       {/* Modal */}f
       <div className={`relative z-10 w-full max-w-lg rounded-2xl bg-white shadow-2xl transform transition-all duration-500
           ${isOpen ? "opacity-100 translate-y-0": "opacity-0 translate-y-full"}`}
       >
