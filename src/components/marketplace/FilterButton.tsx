@@ -17,13 +17,13 @@ export default function FilterButton() {
 
   return (
     <div>
-        <Button 
-            onClick={open}
-            variant="primary"
-            icon={<HiOutlineAdjustmentsHorizontal size={20} />}
-        >
-            Filter
-        </Button>
+      <Button 
+        onClick={open}
+        variant="outline"
+        icon={<HiOutlineAdjustmentsHorizontal size={20} />}
+      >
+        Filter
+      </Button>
     </div>
   )
 }

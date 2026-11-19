@@ -24,9 +24,7 @@ const CreatePropertyModal = () => {
   const { isOpen, close } = useCreatePropertyModalStore()
   const [loading, setLoading] = useState(false)
 
-  const [propertyType, setPropertyType] = useState("")
-  const [location, setLocation] = useState("")
-  const [address, setAddress] = useState("")
+  const [propertyType, setPropertyType] = useState("")                                       
   const [bedrooms, setBedrooms] = useState(1)
   const [bathrooms, setBathrooms] = useState(1)
   const [parkingSpaces, setParkingSpaces] = useState(0)
@@ -179,8 +177,8 @@ const CreatePropertyModal = () => {
                   onChange={(e) => setListingType(e.target.value as "sell" | "rent")}
                   className="h-13 w-full rounded-2xl border border-black/10 px-4"
                 >
-                  <option value="" className="">For Sell</option>
-                  <option value="" className="">For Rent</option>
+                  <option value="sell" className="">For Sell</option>
+                  <option value="rent" className="">For Rent</option>
                 </select>
                 <Input 
                   name="price"
